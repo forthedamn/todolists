@@ -25,7 +25,7 @@ class TodoList {
 
   private get maxIdItem() {
     if (this.list.length === 0) {
-      return null;
+      return {id: 0};
     }
     return this.list.reduce((pre, cur) => {
       if (pre.id > cur.id) return pre;

@@ -15,19 +15,20 @@ class DataBase {
 
   private init() {
     this.dbPath = path.join(this.dbPath, '.database.json');
-    if (fs.existsSync) {
+    if (fs.existsSync(this.dbPath)) {
       try {
         this.dataObject = JSON.parse(fs.readFileSync(this.dbPath).toString());
       } catch(e) {
         console.error('[DataBase error]');
+        console.error(e);
       }
-    return;
+      return;
     }
     fs.writeFileSync(this.dbPath, '[]');
   }
 
   public writeData(data) {
-    fs.writeFileSync(this.dbPath, JSON.stringify(this.dataObject));
+    fs.writeFileSync(this.dbPath, data);
   }
 
   public readData() {
