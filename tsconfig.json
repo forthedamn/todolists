@@ -1,0 +1,21 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowJs": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "noEmitHelpers": true
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  },
+  "vscode": {
+    "rewriteTsconfig": true
+  }
+}
