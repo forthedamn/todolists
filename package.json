@@ -1,0 +1,35 @@
+{
+  "name": "todolists",
+  "version": "0.0.1",
+  "description": "Todolist in NodeJs CLI",
+  "main": "main.js",
+  "bin": {
+    "todo": "main.js"
+  },
+  "scripts": {
+    "test": "tsc && mocha test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forthedamn/todolists.git"
+  },
+  "keywords": [
+    "todolist",
+    "todo"
+  ],
+  "author": "forthedamn <simonzhong0924@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forthedamn/todolists/issues"
+  },
+  "homepage": "https://github.com/forthedamn/todolists#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "js-enums": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.11",
+    "mocha": "^3.2.0",
+    "should": "^11.2.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "globalDependencies": {
+    "mocha": "registry:dt/mocha#2.2.5+20170311011848",
+    "should": "registry:dt/should#8.1.1+20160726191732"
+  },
+  "compilerOptions": {
+    "target": "es2015",
+    "experimentalDecorators": true
+  }
+}
