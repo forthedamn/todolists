@@ -18,17 +18,57 @@ const todoList = new TodoList(originData);
 // instantiation command
 const command = new Command(todoList);
 
-program
-  .version('0.0.1')
-  .option('-a, --add', 'Add todo item', command.add)
-  .option('-r, --rm', 'remove todo item', command.remove)
-  .option('-b, --bbq-sauce', 'Add bbq sauce')
-  .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
-  .parse(process.argv);
+program.usage('Todo List');
 
-console.log('you ordered a pizza with:');
-if (program.add) console.log('  - peppers');
-if (program.pineapple) console.log('  - pineapple');
-if (program.bbqSauce) console.log('  - bbq');
-console.log('  - %s cheese', program.cheese);
+// set default command
+if (!process.argv.slice(2).length) {
+  command.listPending()
+}
+
+// cli add todo item
+program
+  .command('add <content>')
+  .alias('a')
+  .description('Add new todo item to list')
+  .action(function(content){
+    command.add(content);
+  })
+
+// remove todo item
+program
+  .command('rmove <id>')
+  .alias('r')
+  .description('Remove todo item')
+  .action(function(id){
+    id = parseInt(id);
+    command.remove(id);
+  })
+
+// list todolist
+program
+  .command('ls [option]')
+  .description('List todolist')
+  .option('-a, --all', 'List all todolist include checked item')
+  .action(function(cli, options) {
+    if (options.all) {
+      command.listAll()
+      return;
+    }
+    command.listPending()
+})
+
+// check todo item
+program
+  .command('check <id>')
+  .alias('c')
+  .description('Check todo item as completed')
+  .action(id => {
+    id = parseInt(id);
+    command.check(id);
+})
+
+program.parse(process.argv);
+
+
+
 

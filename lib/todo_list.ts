@@ -25,7 +25,7 @@ class TodoList {
 
   private get maxIdItem() {
     if (this.list.length === 0) {
-      return null;
+      return {id: 0};
     }
     return this.list.reduce((pre, cur) => {
       if (pre.id > cur.id) return pre;
@@ -54,17 +54,11 @@ class TodoList {
    * @memberOf TodoList
    */
   public check(id: number) {
-    const item = this._getTodoItemById(id);
-    
-    if (!item) {
-      throw new Error('Todo item dont exit, you may use the wrong id');
-    }
-
-    if (todoStatusEnum.DONE.eql(item.status)) {
-      throw new Error('The item has already been checked');
-    }
-
-    item.status = todoStatusEnum.DONE.name;
+    this.list.map( item => {
+      if (item.id === id) {
+        item.status = todoStatusEnum.DONE.name;
+      }
+    })
   }
 
   /**
@@ -75,17 +69,11 @@ class TodoList {
    * @memberOf TodoList
    */
   public uncheck(id: number) {
-    const item = this._getTodoItemById(id);
-    
-    if (!item) {
-      throw new Error('Todo item dont exit, you may use the wrong id');
-    }
-
-    if (todoStatusEnum.PENDING.eql(item.status)) {
-      throw new Error('The item has already been unchecked');
-    }
-
-    item.status = todoStatusEnum.PENDING.name; 
+    this.list.map( item => {
+      if (item.id === id) {
+        item.status = todoStatusEnum.PENDING.name;
+      }
+    })
   }
   
   /**
