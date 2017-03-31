@@ -48,6 +48,8 @@ class Command {
   
   public check (id: number) {
     this.todoList.check(id);
+    this.listPending();
+    this.dataBase.writeData(this.todoList.toStringify());
   }
 
   public uncheck (id: number) {

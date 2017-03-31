@@ -5,7 +5,6 @@ import * as program from 'commander';
 import DataBase from './lib/data_base';
 import Command from './lib/cli_command';
 import TodoList from './lib/todo_list';
-import add from './lib/cli/add';
 
 // instantiation the db
 const dataBase = new DataBase();
@@ -19,24 +18,54 @@ const todoList = new TodoList(originData);
 // instantiation command
 const command = new Command(todoList);
 
-function listFiles() {
-  command.listPending();
-}
-
-function remove(id) {
-  id = parseInt(id);
-  command.remove(id);
-}
-
 program.usage('Todo List');
 
+// set default command
+if (!process.argv.slice(2).length) {
+  command.listPending()
+}
+
+// cli add todo item
 program
-  .command('add [content]')
+  .command('add <content>')
   .alias('a')
-  .description('Add todo item to list')
+  .description('Add new todo item to list')
   .action(function(content){
-    add(content) 
+    command.add(content);
   })
+
+// remove todo item
+program
+  .command('rmove <id>')
+  .alias('r')
+  .description('Remove todo item')
+  .action(function(id){
+    id = parseInt(id);
+    command.remove(id);
+  })
+
+// list todolist
+program
+  .command('ls [option]')
+  .description('List todolist')
+  .option('-a, --all', 'List all todolist include checked item')
+  .action(function(cli, options) {
+    if (options.all) {
+      command.listAll()
+      return;
+    }
+    command.listPending()
+})
+
+// check todo item
+program
+  .command('check <id>')
+  .alias('c')
+  .description('Check todo item as completed')
+  .action(id => {
+    id = parseInt(id);
+    command.check(id);
+})
 
 program.parse(process.argv);
 
