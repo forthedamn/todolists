@@ -67,8 +67,14 @@ program
     command.check(id);
 })
 
+// uncheck todo item
+program
+  .command('uncheck <id>')
+  .alias('uc')
+  .description('Uncheck todo item as pending')
+  .action(id => {
+  id = parseInt(id);
+  command.uncheck(id);
+})
+
 program.parse(process.argv);
-
-
-
-

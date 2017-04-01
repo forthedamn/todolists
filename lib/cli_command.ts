@@ -54,6 +54,8 @@ class Command {
 
   public uncheck (id: number) {
     this.todoList.uncheck(id);
+    this.listPending();
+    this.dataBase.writeData(this.todoList.toStringify());
   }
 }
 
