@@ -85,7 +85,10 @@ class TodoList {
    * @memberOf TodoList
    */
   public getItemListByStatus(status: TodoStatusEnumItem):Array<TodoItem> {
-    return this.list.filter(item => status.eql(item.status));
+    
+    return this.list.filter(item => {
+      return status.eql(item.status);
+    });
   }
   
   /**

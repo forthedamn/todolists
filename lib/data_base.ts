@@ -25,6 +25,13 @@ class DataBase {
       return;
     }
     fs.writeFileSync(this.dbPath, '[]');
+    try {
+        this.dataObject = []; 
+      } catch(e) {
+        console.error('[DataBase error]');
+        console.error(e);
+      }
+      return;
   }
 
   public writeData(data) {

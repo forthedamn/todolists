@@ -77,4 +77,19 @@ program
   command.uncheck(id);
 })
 
+// clear todolist
+program
+  .command('clear [id]')
+  .alias('cl')
+  .description('Clear todo item by id')
+  .option('-a --all', 'Clear all todo items')
+  .action(function(id, options) {
+    if (options.all) {
+      command.clearAll();
+      return;
+    }
+    id = parseInt(id);
+    command.clearById(id);
+})
+
 program.parse(process.argv);

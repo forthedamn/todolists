@@ -1,5 +1,6 @@
 import TodoList from './todo_list';
 import DataBase from './data_base';
+import Style from './style';
 import {todoStatusEnum} from './enum/todo_status';
 
 class Command {
@@ -17,11 +18,10 @@ class Command {
   }
 
   private listFiles (files) {
-    // TODO: list should have style
    if (typeof files === 'object') {
-     files = JSON.stringify(files);
+     const style = new Style(files);
+     style.default();
    }
-   console.log(files) 
   }
 
   public add (content: string) {
@@ -55,6 +55,17 @@ class Command {
   public uncheck (id: number) {
     this.todoList.uncheck(id);
     this.listPending();
+    this.dataBase.writeData(this.todoList.toStringify());
+  }
+
+  public clearAll () {
+    this.todoList.clearAll();
+    this.dataBase.writeData(this.todoList.toStringify());
+  }
+
+  public clearById(id: number) {
+    this.todoList.clearById(id);
+    this.listAll();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 }

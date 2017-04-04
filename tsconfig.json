@@ -3,7 +3,7 @@
   "compilerOptions": {
     "allowJs": true,
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es2015",
     "noImplicitAny": false,
     "sourceMap": false,
     "experimentalDecorators": true,
