@@ -1,13 +1,14 @@
 {
   "name": "todolists",
-  "version": "0.0.1",
+  "version": "0.0.2-beta1",
   "description": "Todolist in NodeJs CLI",
   "main": "main.js",
   "bin": {
     "todo": "main.js"
   },
   "scripts": {
-    "test": "tsc && mocha test/*.test.js"
+    "test": "tsc & mocha test/*.test.js",
+    "dev": "tsc **.ts --watch"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/forthedamn/todolists#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "commander": "^2.9.0",
     "js-enums": "^1.0.1"
   },
