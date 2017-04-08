@@ -58,16 +58,11 @@ class Command {
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public clearAll () {
+  public removeAll () {
     this.todoList.clearAll();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public clearById(id: number) {
-    this.todoList.clearById(id);
-    this.listAll();
-    this.dataBase.writeData(this.todoList.toStringify());
-  }
 }
 
 export default Command;

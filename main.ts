@@ -18,7 +18,16 @@ const todoList = new TodoList(originData);
 // instantiation command
 const command = new Command(todoList);
 
-program.usage('Todo List');
+let pkgConfig = {
+  version: 'beta',
+}
+try {
+  pkgConfig = JSON.parse(fs.readFileSync(path.join(__dirname, './package.json'), 'utf-8'));
+} catch(e) {
+  console.error(e);
+}
+
+program.version(pkgConfig.version).usage('Todo List');
 
 // set default command
 if (!process.argv.slice(2).length) {
@@ -30,19 +39,25 @@ program
   .command('add <content>')
   .alias('a')
   .description('Add new todo item to list')
-  .action(function(content){
+  .action(function(content, cmd){
+    content = process.argv.slice(3).join(' ');
     command.add(content);
   })
 
 // remove todo item
 program
-  .command('rmove <id>')
+  .command('remove [id]')
   .alias('r')
   .description('Remove todo item')
-  .action(function(id){
+  .option('-a --all', 'Clear all todo items')
+  .action(function(id, options) {
+    if (options.all) {
+      command.removeAll();
+      return;
+    }
     id = parseInt(id);
     command.remove(id);
-  })
+})
 
 // list todolist
 program
@@ -77,19 +92,5 @@ program
   command.uncheck(id);
 })
 
-// clear todolist
-program
-  .command('clear [id]')
-  .alias('cl')
-  .description('Clear todo item by id')
-  .option('-a --all', 'Clear all todo items')
-  .action(function(id, options) {
-    if (options.all) {
-      command.clearAll();
-      return;
-    }
-    id = parseInt(id);
-    command.clearById(id);
-})
 
 program.parse(process.argv);
