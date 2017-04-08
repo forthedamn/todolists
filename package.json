@@ -1,13 +1,13 @@
 {
   "name": "todolists",
-  "version": "0.0.2-beta1",
+  "version": "0.0.3-beta",
   "description": "Todolist in NodeJs CLI",
   "main": "main.js",
   "bin": {
     "todo": "main.js"
   },
   "scripts": {
-    "test": "tsc & mocha test/*.test.js",
+    "test": "tsc && mocha test/*.test.js",
     "dev": "tsc **.ts --watch"
   },
   "repository": {
