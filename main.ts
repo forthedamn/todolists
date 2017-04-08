@@ -18,7 +18,16 @@ const todoList = new TodoList(originData);
 // instantiation command
 const command = new Command(todoList);
 
-program.usage('Todo List');
+let pkgConfig = {
+  version: 'beta',
+}
+try {
+  pkgConfig = JSON.parse(fs.readFileSync(path.join(__dirname, './package.json'), 'utf-8'));
+} catch(e) {
+  console.error(e);
+}
+
+program.version(pkgConfig.version).usage('Todo List');
 
 // set default command
 if (!process.argv.slice(2).length) {
@@ -30,13 +39,14 @@ program
   .command('add <content>')
   .alias('a')
   .description('Add new todo item to list')
-  .action(function(content){
+  .action(function(content, cmd){
+    content = process.argv.slice(3).join(' ');
     command.add(content);
   })
 
 // remove todo item
 program
-  .command('remove <id>')
+  .command('remove [id]')
   .alias('r')
   .description('Remove todo item')
   .option('-a --all', 'Clear all todo items')
