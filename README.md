@@ -6,6 +6,8 @@ Todolists in NodeJs Cli
 
 ![img](https://zos.alipayobjects.com/rmsportal/yPkGQThjFECEwbrgPFhs.png)
 
+![gif](https://zos.alipayobjects.com/rmsportal/VnZwiHYkBucmfLvHFWWT.gif)
+
 ```
 
 npm install todolists -g
