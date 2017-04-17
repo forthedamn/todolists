@@ -9,7 +9,7 @@ class DataBase {
 
   constructor(dbPath?: string) {
 
-    this.dbPath = dbPath || __dirname; 
+    this.dbPath = dbPath || path.join(__dirname, '../../');
     this.init();
   }
 

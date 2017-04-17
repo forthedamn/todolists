@@ -12,7 +12,7 @@ class Style {
   public default() {
     this.todolist.map( todo => {
       if (todoStatusEnum.DONE.eql(todo.status)) {
-        console.log(`${colors.yellow(todo.id)}. [${colors.green('√')}] ${colors.cyan(todo.content)}`);
+        console.log(`${colors.yellow(todo.id)}. [${colors.green('✓')}] ${colors.cyan(todo.content)}`);
         return;
       }
       console.log(`${colors.yellow(todo.id)}. [ ] ${colors.cyan(todo.content)}`)
