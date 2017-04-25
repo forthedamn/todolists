@@ -62,14 +62,9 @@ program
 // list todolist
 program
   .command('ls [option]')
-  .description('List todolist')
-  .option('-a, --all', 'List all todolist include checked item')
+  .description('List all todolist include checked item')
   .action(function(cli, options) {
-    if (options.all) {
-      command.listAll()
-      return;
-    }
-    command.listPending()
+    command.listAll();
 })
 
 // check todo item
