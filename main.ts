@@ -87,5 +87,11 @@ program
   command.uncheck(id);
 })
 
-
+// resort todo list
+program
+  .command('resort')
+  .description('Resort todo list id')
+  .action(() => {
+  command.resort();
+})
 program.parse(process.argv);

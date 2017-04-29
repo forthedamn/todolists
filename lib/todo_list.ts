@@ -92,17 +92,18 @@ class TodoList {
   }
   
   /**
-   * resort todo list id base on start
+   * resort todo list id 
    * 
-   * @param {Array<TodoItem>} list 
-   * @param {number} [start] 
    * @returns {Array<TodoItem>} 
    * 
    * @memberOf TodoList
    */
-  public resort(list: Array<TodoItem>, start?: number): Array<TodoItem> {
-    start = start || 1;
+  public resort(): Array<TodoItem> {
+    let start = 1;
     const compare = function(pre, next) {
+      if (todoStatusEnum.DONE.eql(pre.status) && todoStatusEnum.PENDING.eql(next.status)) {
+        return 1;
+      }
       if (pre.id >= next.id) {
         return 1;
       }
@@ -110,8 +111,8 @@ class TodoList {
         return -1;
       }
     }
-    list.sort(compare);
-    return list.map( item => {
+    this.list = this.list.sort(compare);
+    return  this.list.map( item => {
       item.id = start;
       start++;
       return item;

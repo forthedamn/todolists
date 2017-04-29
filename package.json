@@ -7,7 +7,7 @@
     "todo": "main.js"
   },
   "scripts": {
-    "test": "tsc && mocha test/*.test.js",
+    "test": "mocha test/*.test.js",
     "dev": "tsc **.ts --watch"
   },
   "repository": {
