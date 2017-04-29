@@ -63,6 +63,12 @@ class Command {
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
+  public resort() {
+    this.todoList.resort();
+    this.dataBase.writeData(this.todoList.toStringify());
+    this.listAll();
+  }
+
 }
 
 export default Command;
