@@ -21,6 +21,7 @@ use `todo -h` for more infomation
     ls                       List  all items in todolist                   展示 todolist 中所有的项目 
     check|c <id>             Check todo item as completed                  完成某一项
     uncheck|uc <id>          Uncheck todo item as pending                  将某一项设置为未完成
+    resort                   Resort todo list id                           重置 todolist id
 
 ```
 
