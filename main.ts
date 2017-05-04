@@ -27,7 +27,7 @@ try {
   console.error(e);
 }
 
-program.version(pkgConfig.version).usage('Todo List');
+program.version(pkgConfig.version).usage('. Make your own todolist in cli .');
 
 // set default command
 if (!process.argv.slice(2).length) {
@@ -61,7 +61,7 @@ program
 
 // list todolist
 program
-  .command('ls [option]')
+  .command('ls')
   .description('List all todolist include checked item')
   .action(function(cli, options) {
     command.listAll();
