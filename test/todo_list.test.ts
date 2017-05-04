@@ -36,14 +36,15 @@ describe.only('lib/todo_list', () => {
 
   it('should resort todolist', () => {
     todolist.clearAll();
-    [1,2,3,4].forEach(item => todolist.create(item));
+    [1,2,3,4,5,6].forEach(item => todolist.create(item));
     todolist.check(1);
-    todolist.check(4);
+    todolist.check(2);
+    todolist.check(5);
     todolist.resort();
     const list = todolist.getList;
-    list[0].content.should.eql(2);
-    list[2].content.should.eql(1);
-    list[3].content.should.eql(4);
+    list[0].content.should.eql(3);
+    list[1].content.should.eql(4);
+    list[2].content.should.eql(6);
   })
 
 })
