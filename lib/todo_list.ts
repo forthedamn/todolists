@@ -10,19 +10,6 @@ class TodoList {
 
   get getList() {return this.list;}
 
-  /**
-   * get todo item by item id
-   * 
-   * @private
-   * @param {number} id 
-   * @returns 
-   * 
-   * @memberOf TodoList
-   */
-  private _getTodoItemById(id: number) {
-    return this.list.filter( item => item.id === id)[0];
-  }
-
   private get maxIdItem() {
     if (this.list.length === 0) {
       return {id: 0};
