@@ -1,5 +1,21 @@
 # Todolists
 
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][codecov-image]][codecov-url]
+[![npm download][download-image]][download-url]
+
+
+[npm-image]: https://img.shields.io/npm/v/todolists.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/todolists
+[travis-image]: https://img.shields.io/travis/forthedamn/todolists.svg?style=flat-square
+[travis-url]: https://travis-ci.org/forthedamn/todolists
+[codecov-image]: https://codecov.io/gh/forthedamn/todolists/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/forthedamn/todolists
+[download-image]: https://img.shields.io/npm/dt/todolists.svg
+[download-url]: https://npmjs.org/package/todolists
+
+
 Todolists in NodeJs Cli
 
 基于 Nodejs 的命令行 Todolist
