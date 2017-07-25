@@ -7,11 +7,12 @@
     "todo": "main.js"
   },
   "scripts": {
-    "prebuild": "tsc -p ./",
-    "test": "tnpm run prebuild && mocha",
-    "dev": "tsc -p ./ --watch",
+    "prebuild": "tsc -p . --sourcemap",
+    "test": "tnpm run prebuild && nyc mocha",
+    "dev": "tsc -p . --watch",
     "ci": "npm run prebuild && npm run cov",
-    "cov": "istanbul cover ./node_modules/mocha/bin/_mocha --report html -- -R spec"
+    "cov": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "posttest": "nyc report --reporter=json && codecov -t -f coverage/*.json"
   },
   "repository": {
     "type": "git",
@@ -33,13 +34,14 @@
     "js-enums": "^1.0.1"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.12",
     "@types/should": "^8.3.0",
-    "@types/mocha": "^2.2.41",
-    "mocha": "^3.2.0",
-    "should": "^11.2.1",
-    "typescript": "^2.0.0",
     "codecov": "^1.0.1",
-    "istanbul": "^0.4.5"
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "nyc": "^11.0.3",
+    "should": "^11.2.1",
+    "typescript": "^2.0.0"
   }
 }

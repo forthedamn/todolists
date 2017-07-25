@@ -71,3 +71,4 @@ spm_modules
 .vscode
 *.js
 **/*.js
+**/*.js.map
