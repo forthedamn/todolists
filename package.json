@@ -7,8 +7,11 @@
     "todo": "main.js"
   },
   "scripts": {
-    "test": "mocha test/*.test.js",
-    "dev": "tsc **.ts --watch"
+    "prebuild": "tsc -p ./",
+    "test": "tnpm run prebuild && mocha",
+    "dev": "tsc -p ./ --watch",
+    "ci": "npm run prebuild && npm run cov",
+    "cov": "istanbul cover ./node_modules/mocha/bin/_mocha --report html -- -R spec"
   },
   "repository": {
     "type": "git",
@@ -31,8 +34,12 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.12",
+    "@types/should": "^8.3.0",
+    "@types/mocha": "^2.2.41",
     "mocha": "^3.2.0",
     "should": "^11.2.1",
-    "typescript": "^2.0.0"
+    "typescript": "^2.0.0",
+    "codecov": "^1.0.1",
+    "istanbul": "^0.4.5"
   }
 }

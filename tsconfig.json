@@ -6,12 +6,11 @@
     "target": "es6",
     "noImplicitAny": false,
     "sourceMap": false,
-    "experimentalDecorators": true,
-    "noEmitHelpers": true,
-    "importHelpers": true
+    "experimentalDecorators": true
   },
   "include": [
-    "**/*.ts"
+    "./lib/**/*.ts",
+    "./test/**/*.ts"
   ],
   "exclude": [
     "node_modules"
