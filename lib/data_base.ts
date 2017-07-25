@@ -34,11 +34,11 @@ class DataBase {
       return;
   }
 
-  public writeData(data) {
+  writeData(data) {
     fs.writeFileSync(this.dbPath, data);
   }
 
-  public readData() {
+  readData() {
     return this.dataObject;
   }
 }
