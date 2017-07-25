@@ -17,7 +17,7 @@ class Style {
     return '✓';
   }
 
-  public default() {
+  default() {
     this.todolist.map( todo => {
       if (todoStatusEnum.DONE.eql(todo.status)) {
         console.log(`${colors.yellow(todo.id)}. [${colors.green(this.checkMark)}] ${colors.cyan(todo.content)}`);

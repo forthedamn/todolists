@@ -39,7 +39,7 @@ class TodoList {
    * @param deadline 
    * @param group 
    */
-  public create(content, deadline?, group?) {
+  create(content, deadline?, group?) {
     const id = this.maxIdItem.id + 1;
     const status = todoStatusEnum.PENDING.name;
     const todoItem = {id, content, status, deadline, group};
@@ -53,7 +53,7 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public check(id: number) {
+  check(id: number) {
     this.list.map( item => {
       if (item.id === id) {
         item.status = todoStatusEnum.DONE.name;
@@ -68,7 +68,7 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public uncheck(id: number) {
+  uncheck(id: number) {
     this.list.map( item => {
       if (item.id === id) {
         item.status = todoStatusEnum.PENDING.name;
@@ -84,7 +84,7 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public getItemListByStatus(status: TodoStatusEnumItem):Array<TodoItem> {
+  getItemListByStatus(status: TodoStatusEnumItem):Array<TodoItem> {
     
     return this.list.filter(item => {
       return status.eql(item.status);
@@ -98,21 +98,19 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public resort(): Array<TodoItem> {
+  resort(): Array<TodoItem> {
     let start = 1;
     const compare = function(pre, next) {
       if (todoStatusEnum.DONE.eql(pre.status) && todoStatusEnum.PENDING.eql(next.status)) {
         return 1;
       }
-      if (pre.id >= next.id) {
+      if (pre.id > next.id) {
         return 1;
       }
-      if (pre.id < next.id) {
-        return -1;
-      }
+      return -1;
     }
     this.list = this.list.sort(compare);
-    return  this.list.map( item => {
+    return this.list.map( item => {
       item.id = start;
       start++;
       return item;
@@ -124,7 +122,7 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public clearAll() {
+  clearAll() {
     this.list = [];
   }
 
@@ -135,7 +133,7 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public clearListByStatus(status: TodoStatusEnumItem) {
+  clearListByStatus(status: TodoStatusEnumItem) {
     this.list = this.list.filter( item => !status.eql(item.status));
   }
 
@@ -143,7 +141,7 @@ class TodoList {
    * remove item by id
    * @param id 
    */
-  public clearById(id: number) {
+  clearById(id: number) {
     this.list = this.list.filter( item => item.id !== id);
   }
 
@@ -154,7 +152,7 @@ class TodoList {
    * 
    * @memberOf TodoList
    */
-  public toStringify(): string {
+  toStringify(): string {
     return JSON.stringify(this.list);
   }
 }

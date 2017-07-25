@@ -1,6 +1,6 @@
 {
   "name": "todolists",
-  "version": "0.0.8-beta",
+  "version": "0.1.1",
   "description": "Todolist in NodeJs CLI",
   "main": "main.js",
   "bin": {
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@types/node": "^7.0.12",
     "mocha": "^3.2.0",
-    "should": "^11.2.1"
+    "should": "^11.2.1",
+    "typescript": "^2.0.0"
   }
 }

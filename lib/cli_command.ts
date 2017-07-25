@@ -24,46 +24,46 @@ class Command {
    }
   }
 
-  public add (content: string) {
+  add (content: string) {
     this.todoList.create(content);
     this.listPending();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public remove (id: number) {
+  remove (id: number) {
     this.todoList.clearById(id);
     this.listPending();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public listPending () {
+  listPending () {
     const file = this.todoList.getItemListByStatus(todoStatusEnum.PENDING);
     this.listFiles(file);
   }
 
-  public listAll () {
+  listAll () {
     const file = this.todoList.getList;
     this.listFiles(file);
   }
   
-  public check (id: number) {
+  check (id: number) {
     this.todoList.check(id);
     this.listPending();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public uncheck (id: number) {
+  uncheck (id: number) {
     this.todoList.uncheck(id);
     this.listPending();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public removeAll () {
+  removeAll () {
     this.todoList.clearAll();
     this.dataBase.writeData(this.todoList.toStringify());
   }
 
-  public resort() {
+  resort() {
     this.todoList.resort();
     this.dataBase.writeData(this.todoList.toStringify());
     this.listAll();
