@@ -96,12 +96,12 @@ class TodoList {
       }
       return -1;
     }
-    this.list = this.list.sort(compare);
-    return this.list.map( item => {
+    this.list = this.list.sort(compare).map( item => {
       item.id = start;
       start++;
       return item;
     });
+    return this.list;
   }
 
   /**
