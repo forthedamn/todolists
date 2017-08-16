@@ -1,6 +1,6 @@
 {
   "name": "todolists",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Todolist in NodeJs CLI",
   "main": "main.js",
   "bin": {
